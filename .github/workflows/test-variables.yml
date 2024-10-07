@@ -3,6 +3,10 @@ name: "Test Variables"
 on:
   workflow_dispatch:
 
+permissions:
+  actions: write
+  pull-requests: read
+
 jobs:
   test-github-env-context:
     runs-on: ubuntu-latest
