@@ -13,7 +13,7 @@ jobs:
         echo "var1=yellow" >> "$GITHUB_ENV"
         echo "var2=green" >> "$GITHUB_OUTPUT"
     - name: step2
-      if: ${{ env.var1 }} == "yellow"
+      if: env.var1 == "yellow"
       env:
         SELECTED_COLOR: ${{ steps.step1.outputs.var2 }} 
       run: |
