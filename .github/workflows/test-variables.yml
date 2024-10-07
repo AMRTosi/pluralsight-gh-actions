@@ -12,8 +12,11 @@ jobs:
       run: |
         echo "var1=yellow" >> "$GITHUB_ENV"
         echo "var2=green" >> "$GITHUB_OUTPUT"
-    - name: step2      
+    - name: step2
+      if: ${{ env.var1 }} == "yellow"
+      env:
+        SELECTED_COLOR: ${{ steps.step1.outputs.var2 }} 
       run: |
         printf '%s\n' "$var1"
         printf '%s\n' "${{ env.var1 }}"
-        printf '%s\n' "${{ steps.step1.outputs.var2 }}"
+        printf '%s\n' "$SELECTED_COLOR"
